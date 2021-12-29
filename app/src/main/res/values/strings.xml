@@ -11,4 +11,7 @@
     <string name="error_msg">error msg</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="asian_paints_limited">Asian Paints Limited</string>
+    <string name="shortname">SHORTNAME</string>
+    <string name="ngm">NGM</string>
 </resources>

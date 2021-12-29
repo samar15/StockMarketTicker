@@ -2,14 +2,70 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black">
     <TextView
+        android:id="@+id/short_n"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="Summary Page"
+        android:layout_marginTop="20dp"
+        android:textSize="25sp"
+        android:text="@string/shortname"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintLeft_toRightOf="@id/short_n"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="5dp"
+        android:text="@string/ngm"
+        android:textColor="@color/red"
+        android:textSize="15sp"
+        />
+
+
+    <TextView
+        android:id="@+id/long_n"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/short_n"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="@string/asian_paints_limited"
+        android:textColor="@color/sky_blue"
+        android:textSize="15sp"
+        />
+
+    <TextView
+        android:id="@+id/current_p"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/long_n"
+        android:layout_marginTop="5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="Rs 367.45"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        />
+    <TextView
+        android:id="@+id/change_p"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/current_p"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="-0.75(-0.02%)"
+        android:textColor="@color/red"
+        android:textSize="15sp"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

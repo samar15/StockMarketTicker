@@ -49,7 +49,7 @@
             app:layout_constraintLeft_toRightOf="@id/guideline2"
             android:text="@string/polygon_usd"
             android:textSize="12sp"
-            android:textColor="@color/white"
+            android:textColor="@color/sky_blue"
             />
 
         <TextView

@@ -11,8 +11,6 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.learning.ticker.R;
-import com.learning.ticker.UI.MainActivity;
-import com.learning.ticker.UI.SummaryFragment;
 import com.learning.ticker.model.TickerDto;
 
 import java.util.List;
@@ -74,9 +72,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         @Override
         public void onClick(View view) {
-            if (context instanceof MainActivity) {
-                ((MainActivity) context).replaceFragment(new SummaryFragment());
-            }
+//            if (context instanceof MainActivity) {
+//                ((MainActivity) context).addFragment(new SummaryFragment(),R.id.fragment_container);
+//            }
         }
     }
 
