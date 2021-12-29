@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Stock Market</string>
+    <string name="an_error_has_occurred">an_error_has_occurred</string>
+    <string name="make_a_search">Make a search!</string>
+    <string name="enter_a_query_then_click_search">Enter a query, then click Search</string>
+    <string name="click_search_and_your_url_will_show_up_here">Click search and your URL will show up here!</string>
+    <string name="ftm_usd">FTM-USD</string>
+    <string name="polygon_usd">Polygon USD</string>
+    <string name="current_price">2.2645</string>
+    <string name="_0_3899_6_23">0.3899(6.23%)</string>
+    <string name="error_msg">error msg</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

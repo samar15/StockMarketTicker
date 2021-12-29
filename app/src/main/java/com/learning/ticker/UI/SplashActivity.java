@@ -1,0 +1,36 @@
+package com.learning.ticker.UI;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.learning.ticker.R;
+
+public class SplashActivity extends AppCompatActivity {
+    String TAG = "SplashActivity";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.splash_activity);
+        Thread background = new Thread() {
+            public void run() {
+                try {
+                    sleep(1*1000);
+                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                    startActivity(intent);
+
+
+                    finish();
+                } catch (Exception e) {
+                    Log.i(TAG, "run: "+ e.toString() );
+                }
+            }
+        };
+        background.start();
+
+
+    }
+}
