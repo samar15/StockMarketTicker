@@ -1,6 +1,7 @@
 package com.learning.ticker.adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.learning.ticker.R;
+import com.learning.ticker.UI.MainActivity;
+import com.learning.ticker.UI.SummaryFragment;
 import com.learning.ticker.model.TickerDto;
 
 import java.util.List;
@@ -62,6 +65,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         public TickerViewHolder(@NonNull View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
             symbol = (TextView) itemView.findViewById(R.id.symbol);
             shortName = (TextView) itemView.findViewById(R.id.short_name);
             currentPrice = (TextView) itemView.findViewById(R.id.current_price);
@@ -72,10 +76,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         @Override
         public void onClick(View view) {
-//            if (context instanceof MainActivity) {
-//                ((MainActivity) context).addFragment(new SummaryFragment(),R.id.fragment_container);
-//            }
+            int position = this.getAbsoluteAdapterPosition();
+            TickerDto tickerDto = tickers.get(position);
+            SummaryFragment fragment = new SummaryFragment();
+            Bundle arguments = new Bundle();
+            arguments.putParcelable("tickerDetails",tickerDto);
+            fragment.setArguments(arguments);
+            ((MainActivity)context).addFragment(fragment,R.id.fragment_container);
+         }
         }
     }
-
-}

@@ -102,6 +102,7 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onFailure(Call<TickerAPIDto> call, Throwable t) {
                 showToast("api failed", Toast.LENGTH_SHORT);
+                progressBar.setVisibility(View.GONE);
             }
         });
 

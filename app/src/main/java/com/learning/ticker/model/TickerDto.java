@@ -1,6 +1,9 @@
     package com.learning.ticker.model;
 
-public class TickerDto {
+    import android.os.Parcel;
+    import android.os.Parcelable;
+
+    public class TickerDto implements Parcelable {
     private String language;
     private String region;
     private String quoteType;
@@ -27,7 +30,86 @@ public class TickerDto {
     private Integer exchangeDataDelayedBy;
     private String symbol;
 
-    public String getLanguage() {
+        protected TickerDto(Parcel in) {
+            language = in.readString();
+            region = in.readString();
+            quoteType = in.readString();
+            byte tmpTriggerable = in.readByte();
+            triggerable = tmpTriggerable == 0 ? null : tmpTriggerable == 1;
+            quoteSourceName = in.readString();
+            exchange = in.readString();
+            if (in.readByte() == 0) {
+                regularMarketChangePercent = null;
+            } else {
+                regularMarketChangePercent = in.readFloat();
+            }
+            if (in.readByte() == 0) {
+                regularMarketPreviousClose = null;
+            } else {
+                regularMarketPreviousClose = in.readFloat();
+            }
+            fullExchangeName = in.readString();
+            longName = in.readString();
+            if (in.readByte() == 0) {
+                sourceInterval = null;
+            } else {
+                sourceInterval = in.readInt();
+            }
+            exchangeTimezoneName = in.readString();
+            exchangeTimezoneShortName = in.readString();
+            if (in.readByte() == 0) {
+                gmtOffSetMilliseconds = null;
+            } else {
+                gmtOffSetMilliseconds = in.readLong();
+            }
+            marketState = in.readString();
+            if (in.readByte() == 0) {
+                priceHint = null;
+            } else {
+                priceHint = in.readInt();
+            }
+            shortName = in.readString();
+            if (in.readByte() == 0) {
+                regularMarketPrice = null;
+            } else {
+                regularMarketPrice = in.readFloat();
+            }
+            if (in.readByte() == 0) {
+                regularMarketTime = null;
+            } else {
+                regularMarketTime = in.readInt();
+            }
+            if (in.readByte() == 0) {
+                regularMarketChange = null;
+            } else {
+                regularMarketChange = in.readFloat();
+            }
+            byte tmpEsgPopulated = in.readByte();
+            esgPopulated = tmpEsgPopulated == 0 ? null : tmpEsgPopulated == 1;
+            byte tmpTradeable = in.readByte();
+            tradeable = tmpTradeable == 0 ? null : tmpTradeable == 1;
+            market = in.readString();
+            if (in.readByte() == 0) {
+                exchangeDataDelayedBy = null;
+            } else {
+                exchangeDataDelayedBy = in.readInt();
+            }
+            symbol = in.readString();
+        }
+
+        public static final Creator<TickerDto> CREATOR = new Creator<TickerDto>() {
+            @Override
+            public TickerDto createFromParcel(Parcel in) {
+                return new TickerDto(in);
+            }
+
+            @Override
+            public TickerDto[] newArray(int size) {
+                return new TickerDto[size];
+            }
+        };
+
+        public String getLanguage() {
         return language;
     }
 
@@ -226,4 +308,82 @@ public class TickerDto {
         this.priceHint = priceHint;
     }
 
-}
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel parcel, int i) {
+            parcel.writeString(language);
+            parcel.writeString(region);
+            parcel.writeString(quoteType);
+            parcel.writeByte((byte) (triggerable == null ? 0 : triggerable ? 1 : 2));
+            parcel.writeString(quoteSourceName);
+            parcel.writeString(exchange);
+            if (regularMarketChangePercent == null) {
+                parcel.writeByte((byte) 0);
+            } else {
+                parcel.writeByte((byte) 1);
+                parcel.writeFloat(regularMarketChangePercent);
+            }
+            if (regularMarketPreviousClose == null) {
+                parcel.writeByte((byte) 0);
+            } else {
+                parcel.writeByte((byte) 1);
+                parcel.writeFloat(regularMarketPreviousClose);
+            }
+            parcel.writeString(fullExchangeName);
+            parcel.writeString(longName);
+            if (sourceInterval == null) {
+                parcel.writeByte((byte) 0);
+            } else {
+                parcel.writeByte((byte) 1);
+                parcel.writeInt(sourceInterval);
+            }
+            parcel.writeString(exchangeTimezoneName);
+            parcel.writeString(exchangeTimezoneShortName);
+            if (gmtOffSetMilliseconds == null) {
+                parcel.writeByte((byte) 0);
+            } else {
+                parcel.writeByte((byte) 1);
+                parcel.writeLong(gmtOffSetMilliseconds);
+            }
+            parcel.writeString(marketState);
+            if (priceHint == null) {
+                parcel.writeByte((byte) 0);
+            } else {
+                parcel.writeByte((byte) 1);
+                parcel.writeInt(priceHint);
+            }
+            parcel.writeString(shortName);
+            if (regularMarketPrice == null) {
+                parcel.writeByte((byte) 0);
+            } else {
+                parcel.writeByte((byte) 1);
+                parcel.writeFloat(regularMarketPrice);
+            }
+            if (regularMarketTime == null) {
+                parcel.writeByte((byte) 0);
+            } else {
+                parcel.writeByte((byte) 1);
+                parcel.writeInt(regularMarketTime);
+            }
+            if (regularMarketChange == null) {
+                parcel.writeByte((byte) 0);
+            } else {
+                parcel.writeByte((byte) 1);
+                parcel.writeFloat(regularMarketChange);
+            }
+            parcel.writeByte((byte) (esgPopulated == null ? 0 : esgPopulated ? 1 : 2));
+            parcel.writeByte((byte) (tradeable == null ? 0 : tradeable ? 1 : 2));
+            parcel.writeString(market);
+            if (exchangeDataDelayedBy == null) {
+                parcel.writeByte((byte) 0);
+            } else {
+                parcel.writeByte((byte) 1);
+                parcel.writeInt(exchangeDataDelayedBy);
+            }
+            parcel.writeString(symbol);
+        }
+    }
