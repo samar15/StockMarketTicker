@@ -49,6 +49,8 @@ public class SummaryFragment extends BaseFragment {
 
         changePrice = (TextView) getView().findViewById(R.id.change_p);
         changePrice.setText(change);
+
     }
+
 }
 

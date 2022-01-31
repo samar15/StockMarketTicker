@@ -1,6 +1,7 @@
 package com.learning.ticker.UI;
 
 import android.os.Bundle;
+import android.widget.FrameLayout;
 
 import androidx.annotation.Nullable;
 
@@ -8,6 +9,7 @@ import com.learning.ticker.R;
 
 public class MainActivity extends BaseActivity {
 
+    FrameLayout frameLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -15,4 +17,6 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         addFragment(new HomeFragment(), R.id.fragment_container);
     }
+
+
 }

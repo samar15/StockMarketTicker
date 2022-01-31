@@ -22,33 +22,34 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private Context context;
     private List<TickerDto> tickers;
 
-    public  RecyclerViewAdapter(Context context , List<TickerDto> tickers){
-        this.context= context;
+    public RecyclerViewAdapter(Context context, List<TickerDto> tickers) {
+        this.context = context;
         this.tickers = tickers;
 
     }
+
     @NonNull
     @Override
     public RecyclerViewAdapter.TickerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new TickerViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.card,parent,false));
+        return new TickerViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.card, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull TickerViewHolder holder, int position) {
         TickerDto ticker = tickers.get(position);
 
-        String change = String.valueOf(String.format("%.6f",ticker.getRegularMarketChange())) + "(" +
-                String.valueOf(String.format("%.2f",ticker.getRegularMarketChangePercent())) + ")";
+        String change = String.valueOf(String.format("%.6f", ticker.getRegularMarketChange())) + "(" +
+                String.valueOf(String.format("%.2f", ticker.getRegularMarketChangePercent())) + ")";
 
 
         holder.symbol.setText(ticker.getSymbol());
-        holder.shortName .setText(ticker.getShortName());
-        holder.currentPrice . setText(String.valueOf(ticker.getRegularMarketPrice()));
+        holder.shortName.setText(ticker.getShortName());
+        holder.currentPrice.setText(String.valueOf(ticker.getRegularMarketPrice()));
         holder.changePrice.setText(change);
 
-            if(0>ticker.getRegularMarketChangePercent()){
-                holder.changePrice.setTextColor(ContextCompat.getColor(context.getApplicationContext(), R.color.red));
-            }
+        if (0 > ticker.getRegularMarketChangePercent()) {
+            holder.changePrice.setTextColor(ContextCompat.getColor(context.getApplicationContext(), R.color.red));
+        }
     }
 
     @Override
@@ -80,9 +81,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             TickerDto tickerDto = tickers.get(position);
             SummaryFragment fragment = new SummaryFragment();
             Bundle arguments = new Bundle();
-            arguments.putParcelable("tickerDetails",tickerDto);
+            arguments.putParcelable("tickerDetails", tickerDto);
             fragment.setArguments(arguments);
-            ((MainActivity)context).addFragment(fragment,R.id.fragment_container);
-         }
+            ((MainActivity) context).replaceFragment(fragment, R.id.fragment_container);
         }
+
     }
+}
